@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masterclass — Maxsus Taklif</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f0ebe3;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* ENVELOPE */
+  .envelope-wrap {
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+  }
+
+  .env-flap {
+    width: 100%;
+    height: 130px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .env-flap svg {
+    width: 100%;
+    height: 100%;
+    transform-origin: top center;
+    transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .env-flap svg.flap-open {
+    transform: rotateX(180deg) translateY(-4px);
+  }
+
+  .env-body {
+    background: #ede8df;
+    border: 1px solid #c9bfaf;
+    border-top: none;
+    padding: 2rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  }
+
+  .env-logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.2rem;
+  }
+
+  .env-logo {
+    background: #fff;
+    border: 1px solid #c9bfaf;
+    border-radius: 3px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3a3530;
+    letter-spacing: 0.5px;
+  }
+
+  .env-x { font-size: 11px; color: #8a7a68; }
+
+  .env-hint {
+    font-size: 13px;
+    color: #8a7a68;
+    letter-spacing: 1px;
+  }
+
+  .env-hint span {
+    display: inline-block;
+    margin-top: 6px;
+    animation: bob 1.8s ease-in-out infinite;
+  }
+
+  @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+
+  /* LETTER */
+  .letter-wrap {
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 1s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .letter-wrap.open { max-height: 1400px; }
+
+  .letter {
+    background: #fff;
+    border: 1px solid #ddd6cc;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+
+  .ltr-header {
+    background: #111;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+  }
+
+  .ltr-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #c9a84c;
+    text-transform: uppercase;
+    border: 1px solid #c9a84c;
+    padding: 5px 16px;
+    margin-bottom: 1.2rem;
+  }
+
+  .ltr-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .ltr-partners {
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #888;
+  }
+
+  .gold-line {
+    width: 50px;
+    height: 2px;
+    background: #c9a84c;
+    margin: 1rem auto 0;
+  }
+
+  .ltr-body {
+    padding: 2rem;
+  }
+
+  .to-section {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed #e0d8cc;
+  }
+
+  .to-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a7a68;
+    margin-bottom: 8px;
+  }
+
+  .to-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-style: italic;
+    color: #111;
+  }
+
+  .ltr-body p {
+    font-size: 14px;
+    line-height: 1.85;
+    color: #3a3530;
+    margin-bottom: 1rem;
+  }
+
+  .details-box {
+    background: #fdf9f4;
+    border-left: 3px solid #c9a84c;
+    border-radius: 0 4px 4px 0;
+    padding: 1.2rem 1.4rem;
+    margin: 1.5rem 0;
+  }
+
+  .details-box h3 {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 12px;
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #3a3530;
+  }
+
+  .detail-row:last-child { margin-bottom: 0; }
+
+  .detail-icon {
+    width: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 16px;
+  }
+
+  .gift-note {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: #f5f0ea;
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin: 1.5rem 0;
+    font-size: 13px;
+    color: #5a5048;
+    line-height: 1.6;
+  }
+
+  .ltr-footer {
+    border-top: 1px dashed #e0d8cc;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .signature .sig-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a7a68;
+    margin-bottom: 4px;
+  }
+
+  .signature .sig-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: #111;
+  }
+
+  .seal {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #b91c1c;
+    border: 2px solid #991b1b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  /* EDIT PANEL */
+  .edit-panel {
+    width: 100%;
+    margin-top: 1.5rem;
+    background: #fff;
+    border: 1px solid #ddd6cc;
+    border-radius: 6px;
+    padding: 1.2rem 1.5rem;
+    display: none;
+  }
+
+  .edit-panel.visible { display: block; }
+
+  .edit-panel h4 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a7a68;
+    margin-bottom: 12px;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .field-group label {
+    font-size: 12px;
+    color: #5a5048;
+    font-weight: 500;
+  }
+
+  .field-group input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #ddd6cc;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #111;
+    outline: none;
+    background: #fdfaf7;
+  }
+
+  .field-group input:focus { border-color: #c9a84c; }
+
+  .apply-btn {
+    background: #111;
+    color: #c9a84c;
+    border: none;
+    padding: 10px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.2s;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .apply-btn:hover { background: #333; }
+
+  .open-edit-btn {
+    margin-top: 1.2rem;
+    background: transparent;
+    border: 1px solid #c9bfaf;
+    color: #8a7a68;
+    padding: 9px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border-radius: 3px;
+    width: 100%;
+    transition: all 0.2s;
+  }
+
+  .open-edit-btn:hover { border-color: #8a7a68; color: #3a3530; }
+
+  @media (max-width: 480px) {
+    .ltr-title { font-size: 26px; }
+    .to-name { font-size: 20px; }
+    .ltr-footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ENVELOPE -->
+  <div class="envelope-wrap" onclick="openEnv()" id="envWrap">
+    <div class="env-flap">
+      <svg id="flapSvg" viewBox="0 0 540 130" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 540,0 270,130" fill="#ddd6cc" stroke="#c9bfaf" stroke-width="1"/>
+        <polygon points="0,0 540,0 270,100" fill="#e8e2d8"/>
+      </svg>
+    </div>
+    <div class="env-body">
+      <div class="env-logo-row">
+        <span class="env-logo">Dunyabunyo</span>
+        <span class="env-x">×</span>
+        <span class="env-logo">Vetonit Zavodi</span>
+      </div>
+      <div class="env-hint">
+        Ochish uchun bosing
+        <span>↓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LETTER -->
+  <div class="letter-wrap" id="letterWrap">
+    <div class="letter">
+      <div class="ltr-header">
+        <div class="ltr-badge">Maxsus taklif</div>
+        <div class="ltr-title">Masterclass<br>Taklif Xati</div>
+        <div class="ltr-partners">Dunyabunyo × Vetonit Zavodi</div>
+        <div class="gold-line"></div>
+      </div>
+
+      <div class="ltr-body">
+        <div class="to-section">
+          <div class="to-label">Kimga</div>
+          <div class="to-name" id="displayName">Hurmatli Blogger</div>
+        </div>
+
+        <p>Siz bilan maxsus bir imkoniyatni baham ko'rishdan mamnunmiz. Dunyabunyo va Vetonit Zavodi hamkorligi doirasida o'tkazilayotgan ekskluziv masterclassga sizni taklif etamiz.</p>
+
+        <p>Bu masterclass qurilish va ta'mirlash sohasidagi ilg'or texnologiyalar, zamonaviy yechimlar va professional sirlarni o'z ichiga oladi. Siz kabi ta'sirli auditoriyaga ega bloger sifatida sizning ishtirokingiz juda qimmatli.</p>
+
+        <div class="details-box">
+          <h3>Tadbir ma'lumotlari</h3>
+          <div class="detail-row">
+            <span class="detail-icon">📅</span>
+            <span id="displayDate">Sana: _____________</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">📍</span>
+            <span id="displayLocation">Joyi: _____________</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">👥</span>
+            <span>Format: Yopiq, maxsus taklif asosida</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-icon">📸</span>
+            <span>Kontent: Ruxsat etilgan va rag'batlantiriladi</span>
+          </div>
+        </div>
+
+        <div class="gift-note">
+          <span style="font-size:18px">🎁</span>
+          <span>Tadbirda ishtirok etganingiz uchun maxsus sovg'a va hamkorlik takliflari taqdim etiladi.</span>
+        </div>
+
+        <p>Ishtirokingizni tasdiqlash yoki qo'shimcha ma'lumot olish uchun biz bilan bog'laning. Sizni ko'rishni sabrsizlik bilan kutamiz!</p>
+      </div>
+
+      <div class="ltr-footer">
+        <div class="signature">
+          <div class="sig-label">Hurmat bilan</div>
+          <div class="sig-name">Dunyabunyo jamoasi</div>
+        </div>
+        <div class="seal">✦</div>
+      </div>
+    </div>
+
+    <button class="open-edit-btn" onclick="toggleEdit()">✏️ Ma'lumotlarni o'zgartirish</button>
+
+    <div class="edit-panel" id="editPanel">
+      <h4>Taklif ma'lumotlari</h4>
+      <div class="field-group">
+        <label>Bloger ismi</label>
+        <input type="text" id="inputName" placeholder="Masalan: Aziz Karimov">
+      </div>
+      <div class="field-group">
+        <label>Sana va vaqt</label>
+        <input type="text" id="inputDate" placeholder="Masalan: 25-iyun, soat 14:00">
+      </div>
+      <div class="field-group">
+        <label>Joyi</label>
+        <input type="text" id="inputLocation" placeholder="Masalan: Toshkent, Yunusobod, ...">
+      </div>
+      <button class="apply-btn" onclick="applyData()">Saqlash va ko'rish</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let opened = false;
+
+  function openEnv() {
+    if (opened) return;
+    opened = true;
+    document.getElementById('flapSvg').classList.add('flap-open');
+    document.getElementById('envWrap').style.cursor = 'default';
+    setTimeout(() => {
+      document.getElementById('letterWrap').classList.add('open');
+    }, 450);
+  }
+
+  function toggleEdit() {
+    const p = document.getElementById('editPanel');
+    p.classList.toggle('visible');
+  }
+
+  function applyData() {
+    const name = document.getElementById('inputName').value.trim();
+    const date = document.getElementById('inputDate').value.trim();
+    const loc  = document.getElementById('inputLocation').value.trim();
+
+    if (name) document.getElementById('displayName').textContent = 'Hurmatli ' + name;
+    if (date) document.getElementById('displayDate').textContent = 'Sana: ' + date;
+    if (loc)  document.getElementById('displayLocation').textContent = 'Joyi: ' + loc;
+
+    document.getElementById('editPanel').classList.remove('visible');
+  }
+</script>
+</body>
+</html>
