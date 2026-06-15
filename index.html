@@ -275,7 +275,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
 .cgh-hl{color:var(--gold);font-weight:700;font-style:italic}
 
 
-/* HERO NAME */
+/* HERO NAME (old) */
 .hero-name-wrap{
   text-align:center;
   margin-bottom:28px;
@@ -318,6 +318,20 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
   animation:shim 1.5s ease-in-out infinite;
 }
 
+
+/* HERO GUEST NAME under Masterclass */
+.hero-guest-name{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(26px,6.5vw,44px);
+  font-style:italic;font-weight:400;
+  color:var(--gold2);
+  letter-spacing:1px;
+  margin-top:14px;
+  text-shadow:0 0 30px rgba(255,215,0,.35);
+  animation:titleGlow 3s ease-in-out infinite alternate;
+}
+
 </style>
 </head>
 <body>
@@ -327,12 +341,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
 <!-- HERO -->
 <div class="hero">
   <div style="max-width:720px;width:100%;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2">
-    <!-- HERO ISM -->
-    <div class="hero-name-wrap" id="heroNameWrap" style="display:none">
-      <div class="hero-name-label">Maxsus taklif</div>
-      <div class="hero-name-text" id="heroName">Hurmatli Blogger</div>
-    </div>
-
     <div class="b-row" style="margin-bottom:28px">
       <div class="b-line"></div><span class="b-text">Hamkorlik · 2026</span><div class="b-line r"></div>
     </div>
@@ -347,6 +355,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
     <div class="ht-wrap">
       <span class="ht-big">Master<span class="ht-gold">class</span></span>
       <span class="ht-sub">Maxsus taklif xati</span>
+      <span class="hero-guest-name" id="heroGuestName" style="display:none"></span>
     </div>
     <p class="hdesc">Qurilish va ta'mirlash san'ati</p>
     <div class="orn">
@@ -383,7 +392,7 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
       <div class="env-hint">Maxsus taklifnomangizni oching</div>
       <div class="env-tap-hint">
         <span class="env-finger">👆</span>
-        <span class="env-tap-text">Bos va och!</span>
+        <span class="env-tap-text">Bosing va oching!</span>
       </div>
       <div class="env-gold-bar"></div>
     </div>
@@ -567,13 +576,13 @@ window.addEventListener('DOMContentLoaded',function(){
   var n=p.get('name'),d=p.get('date'),l=p.get('loc');
   if(n){
     var decoded = decodeURIComponent(n);
+    // Xat ichida
     document.getElementById('displayName').textContent = 'Hurmatli ' + decoded;
-    // Hero ga ham yozamiz
-    var hw = document.getElementById('heroNameWrap');
-    var hn = document.getElementById('heroName');
-    if(hw && hn){
-      hn.textContent = 'Hurmatli ' + decoded;
-      hw.style.display = 'block';
+    // Hero - Masterclass tagida
+    var gn = document.getElementById('heroGuestName');
+    if(gn){
+      gn.textContent = 'Hurmatli ' + decoded;
+      gn.style.display = 'block';
     }
   }
   if(d) document.getElementById('displayDate').textContent=decodeURIComponent(d);
