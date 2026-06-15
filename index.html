@@ -475,6 +475,20 @@
 <script>
   let opened = false;
 
+  function getParam(key) {
+    const p = new URLSearchParams(window.location.search);
+    return p.get(key);
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const name = getParam('name');
+    const date = getParam('date');
+    const loc  = getParam('loc');
+    if (name) document.getElementById('displayName').textContent = 'Hurmatli ' + decodeURIComponent(name);
+    if (date) document.getElementById('displayDate').textContent = 'Sana: ' + decodeURIComponent(date);
+    if (loc)  document.getElementById('displayLocation').textContent = 'Joyi: ' + decodeURIComponent(loc);
+  });
+
   function openEnv() {
     if (opened) return;
     opened = true;
