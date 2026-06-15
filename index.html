@@ -53,7 +53,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
   background-size:300% 300%;animation:gradB 4s ease infinite;
   box-shadow:0 0 40px rgba(255,215,0,.35),0 0 80px rgba(108,31,209,.2);margin:28px 0 36px}
 .logo-gbox-inner{background:var(--bg2);border-radius:10px;padding:28px 52px;display:flex;align-items:center;gap:36px}
-.brand-logo{max-height:90px;max-width:240px;width:auto;object-fit:contain;filter:invert(1) brightness(1.3);animation:logoFloat 3s ease-in-out infinite;display:block}
+.brand-logo{max-height:110px;max-width:280px;width:auto;object-fit:contain;filter:invert(1) brightness(1.3);animation:logoFloat 3s ease-in-out infinite;display:block}
+.brand-logo.b{max-height:48px !important;max-width:130px !important}
 .brand-logo.b{animation-delay:1.5s}
 .sep-wrap{display:flex;flex-direction:column;align-items:center;gap:5px}
 .sep-line{width:1px;height:32px;background:linear-gradient(180deg,transparent,var(--gold),transparent)}
@@ -89,7 +90,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
 .env-gold-bar{position:absolute;bottom:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,transparent 5%,var(--gold) 25%,var(--gold2) 50%,var(--gold) 75%,transparent 95%);animation:shim 3s ease-in-out infinite}
 .env-logos{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
-.env-logos img{height:24px;width:auto;filter:invert(1) brightness(.5);opacity:.6}
+.env-logos img{height:28px;width:auto;filter:invert(1) brightness(.5);opacity:.6}
+.env-logos img:last-child{height:16px !important}
 .env-x{font-size:10px;color:rgba(201,168,76,.35)}
 .env-hint{font-size:9px;letter-spacing:3px;color:rgba(201,168,76,.5);text-transform:uppercase}
 .env-arr{font-size:20px;color:var(--gold2);display:block;margin-top:8px;animation:bob 2s ease-in-out infinite}
@@ -108,7 +110,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
   background:linear-gradient(135deg,var(--gold),var(--purple),var(--gold2),var(--cyan));
   background-size:300% 300%;animation:gradB 4s ease infinite;box-shadow:0 0 30px var(--glow)}
 .lh-logo-inner{background:#0a0818;border-radius:6px;padding:22px 44px;display:flex;align-items:center;gap:32px}
-.lh-logo-inner img{height:68px;width:auto;filter:invert(1) brightness(1.3);opacity:1;animation:logoFloat 3s ease-in-out infinite}
+.lh-logo-inner img{height:76px;width:auto;filter:invert(1) brightness(1.3);opacity:1;animation:logoFloat 3s ease-in-out infinite}
+.lh-logo-inner img:last-child{height:42px !important}
 .lh-logo-inner img:last-child{animation-delay:1.5s}
 .lh-div{width:1px;height:58px;background:linear-gradient(180deg,transparent,rgba(201,168,76,.6),transparent)}
 .lh-badge{display:inline-block;font-size:8px;letter-spacing:5px;color:var(--gold2);text-transform:uppercase;border-top:1px solid rgba(201,168,76,.4);border-bottom:1px solid rgba(201,168,76,.4);padding:7px 22px;margin-bottom:18px}
@@ -167,7 +170,8 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
 .sl{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#b0a070;margin-bottom:5px}
 .sn{font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:#1a1610}
 .fl-logos{display:flex;align-items:center;gap:10px;margin-top:12px}
-.fl-logos img{height:20px;width:auto;filter:brightness(0);opacity:.35}
+.fl-logos img{height:22px;width:auto;filter:brightness(0);opacity:.35}
+.fl-logos img:last-child{height:13px !important}
 .fl-div-line{width:1px;height:18px;background:#b0a070}
 .seal{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));border:3px solid #a08028;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:24px;color:#1a1610;font-weight:700;box-shadow:0 4px 16px rgba(201,168,76,.4);flex-shrink:0}
 
@@ -235,8 +239,9 @@ body{font-family:'Montserrat',sans-serif;background:var(--bg);min-height:100vh;o
 
 /* MOBILE */
 @media(max-width:520px){
-  .logo-gbox-inner{padding:18px 24px;gap:20px}
-  .brand-logo{max-height:72px;max-width:180px}
+  .logo-gbox-inner{padding:18px 22px;gap:16px}
+  .brand-logo{max-height:88px;max-width:220px}
+  .brand-logo.b{max-height:40px !important;max-width:110px !important}
   .lh-logo-inner{padding:14px 20px;gap:18px}
   .lh-logo-inner img{height:42px}
   .kel-logo-wrap{width:120px;height:120px}
