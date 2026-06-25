@@ -645,9 +645,9 @@ btnNo.addEventListener('touchstart',function(e){e.preventDefault();tryRun();},{p
 
 function onNo(){tryRun();}
 function tryRun(){
-  if(runCount>=4){showOverlay();return;}
+  if(runCount>=3){showOverlay();return;}
   runCount++; moveBtn();
-  if(runCount>=4) showOverlay();
+  if(runCount>=3) showOverlay();
 }
 function showOverlay(){
   btnNo.style.display='none';
